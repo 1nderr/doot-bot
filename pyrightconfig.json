@@ -1,3 +1,4 @@
 {
-  "reportMissingTypeStubs": "none"
+  "reportMissingTypeStubs": "none",
+  "reportUnusedCallResult": "none"
 }
