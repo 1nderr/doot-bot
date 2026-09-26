@@ -17,7 +17,8 @@ class Voice(commands.Cog):
             await ctx.send("No voice channel named **Doot Land** found.")
             return
 
-        await voice_channel.connect()
+        voice_client = await voice_channel.connect()
+        self.play_song(voice_client)
 
     @commands.command()
     async def leave(self, ctx: commands.Context[commands.Bot]):
@@ -25,3 +26,12 @@ class Voice(commands.Cog):
             await ctx.voice_client.disconnect(force=True)
         else:
             await ctx.send("I am not in a voice channel")
+
+    def play_song(self, voice_client: discord.VoiceClient):
+        try:
+            voice_client.play(
+                discord.FFmpegPCMAudio("assets/song.mp3"),
+                after=lambda e: self.play_song(voice_client),
+            )
+        except discord.ClientException:
+            return
