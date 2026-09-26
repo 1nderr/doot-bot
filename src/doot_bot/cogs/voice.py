@@ -25,6 +25,7 @@ class Voice(commands.Cog):
         self.play_song(voice_client)
 
     @commands.command()
+    @commands.has_permissions(administrator=True)
     async def leave(self, ctx: commands.Context[commands.Bot]):
         if ctx.voice_client:
             await ctx.voice_client.disconnect(force=True)
