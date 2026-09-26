@@ -17,7 +17,11 @@ class Voice(commands.Cog):
             await ctx.send("No voice channel named **Doot Land** found.")
             return
 
-        voice_client = await voice_channel.connect()
+        try:
+            voice_client = await voice_channel.connect()
+        except discord.ClientException:
+            return
+
         self.play_song(voice_client)
 
     @commands.command()
