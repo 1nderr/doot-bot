@@ -1,3 +1,4 @@
+import discord
 from discord.ext import commands
 
 
@@ -6,5 +7,21 @@ class Voice(commands.Cog):
         self.bot: commands.Bot = bot
 
     @commands.command()
-    async def hello(self, ctx: commands.Context[commands.Bot]):
-        await ctx.send("Hello")
+    async def play(self, ctx: commands.Context[commands.Bot]):
+        if ctx.guild is None:
+            await ctx.send("This command only works in servers")
+            return
+
+        voice_channel = discord.utils.get(ctx.guild.voice_channels, name="Doot Land")
+        if voice_channel is None:
+            await ctx.send("No voice channel named **Doot Land** found.")
+            return
+
+        await voice_channel.connect()
+
+    @commands.command()
+    async def leave(self, ctx: commands.Context[commands.Bot]):
+        if ctx.voice_client:
+            await ctx.voice_client.disconnect(force=True)
+        else:
+            await ctx.send("I am not in a voice channel")
