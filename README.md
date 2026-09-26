@@ -2,7 +2,7 @@
 
 This is a Discord bot written in Python that joins a voice channel and loops the doot music forever.
 
-![](https://github.com/1nderr/doot-bot/blob/main/doot.png?raw=true)
+![](https://github.com/1nderr/doot-bot/blob/main/assets/doot.png?raw=true)
 
 The `song.mp3` in this repo is based on [this YouTube playlist](https://www.youtube.com/watch?v=WzFXaEYPE10&list=PLelh_z0pMOn-J5ZReYaR_UVOyoDJUT3HR).
 
